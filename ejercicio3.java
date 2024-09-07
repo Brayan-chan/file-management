@@ -13,7 +13,7 @@ public class ejercicio3 {
                 System.out.println("Se creo el archivo " + archivoEliminar.getName());
                 System.out.println("El nombre del archivo es: " + archivoEliminar.getName());
                 System.out.println("El archivo: " + archivoEliminar.getName() + " sera eliminado");
-                System.out.println("Eliminando archivo..." + archivoEliminar.delete());
+                System.out.println("Eliminando archivo...");
                 if (archivoEliminar.delete()) {
                     System.out.println("Se elimino el arcivo correctamente");
                 } else {

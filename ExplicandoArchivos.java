@@ -3,7 +3,7 @@ import java.io.*;
 public class ExplicandoArchivos {
 
     public static void main(String[] args) {
-        File arcivo1 = new File("C:/Users/chanp/OneDrive/Escritorio/archivo/prueba.txt");
+        File arcivo1 = new File("/Users/brayanchan/Desktop/MisDocumentos/prueba.txt");
         //Comprobar que el archivo existe con el método exist()
         //System.out.println("Existe:" + arcivo1.exists());
 

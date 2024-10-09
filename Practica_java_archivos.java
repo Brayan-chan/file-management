@@ -9,7 +9,7 @@ import java.util.Scanner;
 public class Practica_java_archivos {
 
     // Variables estáticas para control y entrada de datos
-    static Scanner SC = new Scanner(System.in); // Un único scanner para todas las entradas
+    static Scanner SC = new Scanner(System.in);
 
     // Colores para personalizar la salida en consola
     public static final String ANSI_BLACK = "\u001B[30m";
@@ -39,8 +39,9 @@ public class Practica_java_archivos {
         System.out.println("3. Leer Archivo");
         System.out.println("4. Eliminar Archivo");
         System.out.println("5. Renombrar Archivo");
-        System.out.println("6. Comprobar Directorio");
-        System.out.println("7. Comprobar Acceso");
+        System.out.println("6. Crear Directorio");  // Nueva opción para crear directorios
+        System.out.println("7. Comprobar Directorio");
+        System.out.println("8. Comprobar Acceso");
         System.out.println("Pulse 0 para finalizar");
     }
 
@@ -146,13 +147,6 @@ public class Practica_java_archivos {
         }
     }
 
-    public static void ReenombrarI() {
-        System.out.println(ANSI_BLUE + "--{Renombrar Archivo}--" + ANSI_RESET);
-        System.out.println("Introduzca el nombre del archivo:");
-        String nameB = SC.nextLine();
-        RenombrarAcc(nameB);
-    }
-
     // Métodos para verificar directorio y permisos
     public static void verificarDirectorio(String directorio) {
         File dir = new File(directorio);
@@ -168,6 +162,34 @@ public class Practica_java_archivos {
         System.out.println("Introduzca la ruta del directorio:");
         String directorio = SC.nextLine();
         verificarDirectorio(directorio);
+    }
+
+    public static void ReenombrarI() {
+        System.out.println(ANSI_BLUE + "--{Renombrar Archivo}--" + ANSI_RESET);
+        System.out.println("Introduzca el nombre del archivo:");
+        String nameB = SC.nextLine();
+        RenombrarAcc(nameB);
+    }
+
+    // Mkdir para crear directorios
+    public static void CrearDirectorio(String rutaDirectorio) {
+        File directorio = new File(rutaDirectorio);
+        if (!directorio.exists()) {
+            if (directorio.mkdirs()) {
+                System.out.println(ANSI_GREEN + "El directorio se ha creado con éxito." + ANSI_RESET);
+            } else {
+                System.out.println(ANSI_RED + "No se pudo crear el directorio." + ANSI_RESET);
+            }
+        } else {
+            System.out.println(ANSI_RED + "El directorio ya existe." + ANSI_RESET);
+        }
+    }
+
+    public static void CrearDirectorioI() {
+        System.out.println(ANSI_BLUE + "--{Crear Directorio}--" + ANSI_RESET);
+        System.out.println("Introduzca la ruta completa del directorio a crear:");
+        String rutaDirectorio = SC.nextLine();
+        CrearDirectorio(rutaDirectorio);
     }
 
     public static void verificarAcceso(String ruta) {
@@ -215,9 +237,12 @@ public class Practica_java_archivos {
                     ReenombrarI();
                     break;
                 case 6:
-                    verificarDirectorioI();
+                    CrearDirectorioI();  // Nueva opción para crear directorios
                     break;
                 case 7:
+                    verificarDirectorioI();
+                    break;
+                case 8:
                     verificarAccesoI();
                     break;
                 case 0:
